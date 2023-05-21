@@ -3,7 +3,7 @@ import ActiveLink from "./ActiveLink"
 
 const Header = () => {
   return (
-    <div className="w-screen flex items-center justify-between py-4 px-4 bg-gray-200">
+    <div className="w-screen flex items-center justify-between py-4 px-4 bg-blue-500">
       <Link href="/" className="font-bold text-xl">NBA Stats</Link>
       <div>
         <ActiveLink href="/schedule" style="text-lg me-8">Schedule</ActiveLink>
