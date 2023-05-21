@@ -10,8 +10,10 @@ const ActiveLink = ({
 }: { children: React.ReactNode; style?: string } & LinkProps) => {
   const { href } = rest
   const pathName = usePathname()
+  console.log(href)
+  console.log(pathName)
 
-  const isActive = pathName === href
+  const isActive = pathName.startsWith(href.toString())
   return (
     <Link {...rest} className={isActive ? `active ${style}` : `${style}`}>
       {children}
