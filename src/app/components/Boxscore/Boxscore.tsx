@@ -49,9 +49,6 @@ const Boxscore = ({ stats }: any) => {
               </tr>
             )
           )}
-          {/*stats.map((player: any) => {
-            return <Player key={player.id} stats={player} />
-          })*/}
         </tbody>
       </table>
     </div>
