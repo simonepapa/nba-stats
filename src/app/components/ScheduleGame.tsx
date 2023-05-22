@@ -1,13 +1,28 @@
 import Link from "next/link"
 
 const ScheduleGame = ({ game }: any) => {
-  console.log(game)
+  console.log(typeof(game.status))
 
   return (
     <div className="bg-slate-100 shadow px-4 md:px-8 py-4 mx-auto 2xl:mx-4 mb-8 md:mb-4 flex flex-col md:flex-row md:items-center w-full max-w-xs md:max-w-lg">
       <div className="sm:w-5/6">
-        <p className="text-sm mb-2">{game.postseason ? `${game.season} Playoffs` : `${game.season} Regular season`}</p>
-        <p className="text-sm font-bold uppercase">{game.status}</p>
+        <p className="text-sm mb-2">
+          {game.postseason
+            ? `${game.season} Playoffs`
+            : `${game.season} Regular season`}
+        </p>
+        <p className="text-sm font-bold uppercase">
+          {[
+            "1st Qtr",
+            "2nd Qtr",
+            "3rd Qtr",
+            "4th Qtr Qtr",
+            "Halftime",
+            "Final",
+          ].includes(game.status)
+            ? game.status
+            : ("00" + new Date(game.status).getHours().toString()).slice(-2) + ':' + ("00" + new Date(game.status).getMinutes().toString()).slice(-2)}
+        </p>
         <div className="flex flex-col">
           <div className="flex items-center">
             <p className="text-lg w-56">{game.visitor_team.full_name}</p>
