@@ -36,6 +36,7 @@ async function fillTeams(gameid: string) {
   const stats = await fetchGameStats(gameid)
   const teams: { [key: string]: any } = {}
 
+  // Fill 'teams' object with unique team IDs
   for (let i = 0; i < stats.data.length; i++) {
     if (!(stats.data[i].team.id in teams)) {
       teams[stats.data[i].team.id] = {
@@ -44,6 +45,7 @@ async function fillTeams(gameid: string) {
       }
     }
   }
+  // Put each player in his team
   stats.data.forEach((player: any) => {
     if (player.team.id in teams) {
       teams[player.team.id]["players"][player.id] = player

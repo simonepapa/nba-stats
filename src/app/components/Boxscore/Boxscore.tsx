@@ -9,7 +9,7 @@ const Boxscore = ({ stats }: any) => {
         </caption>
         <thead>
           <tr className="border-b-2">
-            <th className="px-5 border-r text-left w-56">Player</th>
+            <th className="px-5 border-r text-left w-56">PLAYER</th>
             <th className="px-5 text-right">MIN</th>
             <th className="px-5 text-right">FG</th>
             <th className="px-5 text-right">3PT</th>
