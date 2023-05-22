@@ -61,8 +61,8 @@ const ScheduleDayPage = async ({ params: { date } }: Props) => {
         })}
       </div>
       <div className="flex flex-wrap">
-        {games.data.map((game) => {
-          return <ScheduleGame game={game} />
+        {games.data.map((game: any) => {
+          return <ScheduleGame key={game.id} game={game} />
         })}
       </div>
     </div>
