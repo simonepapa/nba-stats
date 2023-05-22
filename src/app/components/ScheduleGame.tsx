@@ -25,7 +25,7 @@ const ScheduleGame = ({ game }: any) => {
         </p>
         <div className="flex flex-col">
           <div className="flex items-center">
-            <p className="text-lg w-56">{game.visitor_team.full_name}</p>
+            <Link href={`/team/${game.visitor_team.id}`} className="text-lg w-56 text-[#0000EE] hover:underline">{game.visitor_team.full_name}</Link>
             <p
               className={`${
                 game.visitor_team_score > game.home_team_score &&
@@ -38,7 +38,7 @@ const ScheduleGame = ({ game }: any) => {
             </p>
           </div>
           <div className="flex items-center">
-            <p className="text-lg w-56">{game.home_team.full_name}</p>
+            <Link href={`/team/${game.home_team.id}`} className="text-lg w-56 text-[#0000EE] hover:underline">{game.home_team.full_name}</Link>
             <p
               className={`${
                 game.visitor_team_score < game.home_team_score &&

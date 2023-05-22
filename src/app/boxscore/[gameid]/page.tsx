@@ -1,4 +1,5 @@
 import Boxscore from "@/app/components/Boxscore/Boxscore"
+import Link from "next/link"
 
 interface Props {
   params?: any
@@ -63,9 +64,12 @@ const BoxscorePage = async ({ params: { gameid } }: Props) => {
     <div className="bg-white rounded-md shadow-md py-2 w-fit mt-4 mx-auto max-w-7xl">
       <div className="flex flex-col lg:flex-row items-center justify-center">
         <div className="flex items-center">
-          <p className="text-lg sm:text-2xl w-56 sm:w-64 lg:w-fit lg:me-2">
+          <Link
+            href={`/team/${game.visitor_team.id}`}
+            className="text-lg sm:text-2xl w-56 sm:w-64 lg:w-fit lg:me-2 text-[#0000EE] hover:underline"
+          >
             {game.visitor_team.full_name}
-          </p>
+          </Link>
           <p
             className={`${
               game.visitor_team_score > game.home_team_score &&
@@ -89,9 +93,12 @@ const BoxscorePage = async ({ params: { gameid } }: Props) => {
           >
             {game.home_team_score}
           </p>
-          <p className="text-lg sm:text-2xl w-56 sm:w-64 lg:w-fit lg:ms-2 order-1 lg:order-2">
+          <Link
+            href={`/team/${game.home_team.id}`}
+            className="text-lg sm:text-2xl w-56 sm:w-64 lg:w-fit lg:ms-2 order-1 lg:order-2 text-[#0000EE] hover:underline"
+          >
             {game.home_team.full_name}
-          </p>
+          </Link>
         </div>
       </div>
       {Object.keys(teams).map((team) => (
