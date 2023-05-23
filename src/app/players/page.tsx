@@ -7,12 +7,14 @@ import Players from "../components/Player/Players"
 
 const PlayersPage = () => {
   const [players, setPlayers] = useState({})
+  const [loading, setLoading] = useState(false)
 
   const searchParams = useSearchParams()
 
   useEffect(() => {
     const fetchPlayers = async () => {
       let query = ""
+      setLoading(true)
       if (
         searchParams.get("search") !== null &&
         searchParams.get("page") !== null
@@ -32,6 +34,7 @@ const PlayersPage = () => {
       const res = await fetch(query)
       const data = await res.json()
       setPlayers(data)
+      setLoading(false)
     }
 
     fetchPlayers()
@@ -41,7 +44,13 @@ const PlayersPage = () => {
     <div className="bg-white rounded-md shadow-md px-4 py-4 w-9/12 mt-4 mx-auto">
       <h1 className="font-bold text-3xl mb-2">NBA Players</h1>
       <PlayerSearch getSearchResults={(results: any) => setPlayers(results)} />
-      <Players players={players} />
+      {!loading ? (
+        <Players players={players} />
+      ) : (
+        <div className="loader mt-8">
+          <div className="spinner"></div>
+        </div>
+      )}
     </div>
   )
 }

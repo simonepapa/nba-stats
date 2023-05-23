@@ -11,6 +11,8 @@ const PlayerSearch = ({ getSearchResults }: any) => {
   const searchParams = useSearchParams() as any
 
   const handleSubmit = async (e: any) => {
+    await new Promise((resolve) => setTimeout(resolve, 3000))
+
     const currentSearchParams = new URLSearchParams(searchParams)
 
     e.preventDefault()
