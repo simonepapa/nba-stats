@@ -18,7 +18,7 @@ const Header = () => {
         >
           Schedule
         </ActiveLink>
-        <ActiveLink href="/teams" style="text-lg">
+        <ActiveLink href="/teams" style="text-lg me-8">
           Teams
         </ActiveLink>
         <ActiveLink href="/players" style="text-lg">

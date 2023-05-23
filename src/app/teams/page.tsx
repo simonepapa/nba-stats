@@ -50,7 +50,7 @@ async function fetchTeams() {
   return teamsByConference
 }
 
-const StatsPage = async () => {
+const TeamsPage = async () => {
   const teams = await fetchTeams()
 
   return (
@@ -105,4 +105,4 @@ const StatsPage = async () => {
     </div>
   )
 }
-export default StatsPage
+export default TeamsPage
