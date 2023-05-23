@@ -18,8 +18,11 @@ const Header = () => {
         >
           Schedule
         </ActiveLink>
-        <ActiveLink href="/stats" style="text-lg">
-          Stats
+        <ActiveLink href="/teams" style="text-lg">
+          Teams
+        </ActiveLink>
+        <ActiveLink href="/players" style="text-lg">
+          Players
         </ActiveLink>
       </div>
     </div>

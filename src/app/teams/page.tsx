@@ -53,8 +53,6 @@ async function fetchTeams() {
 const StatsPage = async () => {
   const teams = await fetchTeams()
 
-  console.log(teams)
-
   return (
     <div className="bg-white rounded-md shadow-md px-4 py-2 w-9/12 mt-4 mx-auto">
       <h1 className="font-bold text-3xl mb-2">NBA Teams</h1>
@@ -63,7 +61,9 @@ const StatsPage = async () => {
         {Object.keys(teams["west"]).map((division: any) => {
           return (
             <div className="flex flex-col items-center me-8">
-              <h3 className="uppercase font-bold text-lg mb-2">{division.charAt(0).toUpperCase() + division.slice(1)}</h3>
+              <h3 className="uppercase font-bold text-lg mb-2">
+                {division.charAt(0).toUpperCase() + division.slice(1)}
+              </h3>
               {teams["west"][division].map((team: any, index: number) => {
                 return (
                   <Link
@@ -84,7 +84,9 @@ const StatsPage = async () => {
         {Object.keys(teams["east"]).map((division: any) => {
           return (
             <div className="flex flex-col items-center me-8">
-              <h3 className="uppercase font-bold text-lg mb-2">{division.charAt(0).toUpperCase() + division.slice(1)}</h3>
+              <h3 className="uppercase font-bold text-lg mb-2">
+                {division.charAt(0).toUpperCase() + division.slice(1)}
+              </h3>
               {teams["east"][division].map((team: any, index: number) => {
                 return (
                   <Link
