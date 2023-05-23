@@ -1,4 +1,5 @@
 import StatsTable from "@/app/components/Player/StatsTable"
+import Link from "next/link"
 
 interface Props {
   params?: any
@@ -55,7 +56,7 @@ const PlayerPage = async ({ params: { id } }: Props) => {
       <h1 className="font-bold text-3xl mb-2">
         {player.first_name} {player.last_name}
       </h1>
-      <p><strong>Team</strong>: {player.team.full_name}</p>
+      <p><strong>Team</strong>: <Link href={`/team/${player.team.id}`} className="text-[#0000EE] hover:underline">{player.team.full_name}</Link></p>
       <p><strong>Position</strong>: {player.position}</p>
       <p>
         <strong>Height</strong>:{" "}
