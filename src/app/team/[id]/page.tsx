@@ -1,5 +1,9 @@
 import ScheduleGame from "@/app/components/ScheduleGame"
 import Link from "next/link"
+import {
+  HiOutlineArrowNarrowLeft,
+  HiOutlineArrowNarrowRight,
+} from "react-icons/hi"
 
 interface Props {
   params?: any
@@ -56,25 +60,61 @@ const TeamPage = async ({ params: { id } }: Props) => {
 
   return (
     <div className="bg-white rounded-md shadow-md px-4 py-2 w-9/12 mt-4 mx-auto max-w-7xl">
-      <h1 className="font-bold text-3xl mb-2">
-        {team.full_name}
-      </h1>
-      <p><strong>Abbreviation</strong>: {team.abbreviation}</p>
-      <p><strong>City</strong>: {team.city}</p>
-      <p><strong>Division</strong>: {team.division}</p>
-      <p><strong>Conference</strong>: {team.conference}</p>
+      <h1 className="font-bold text-3xl mb-2">{team.full_name}</h1>
+      <p>
+        <strong>Abbreviation</strong>: {team.abbreviation}
+      </p>
+      <p>
+        <strong>City</strong>: {team.city}
+      </p>
+      <p>
+        <strong>Division</strong>: {team.division}
+      </p>
+      <p>
+        <strong>Conference</strong>: {team.conference}
+      </p>
       <div className="flex justify-evenly max-w-xl mx-auto">
-        <Link href={`/team/${id}/${new Date().getFullYear() - 2}`} className="text-xl">{new Date().getFullYear() - 2}</Link>
+        <div className="flex items-center">
+          <Link
+            href={`/team/${id}/${new Date().getFullYear() - 2}`}
+            className="text-xl"
+          >
+            <HiOutlineArrowNarrowLeft className="me-8 transition hover:scale-125" />
+          </Link>
+          <Link
+            href={`/team/${id}/${new Date().getFullYear() - 2}`}
+            className="text-xl"
+          >
+            {new Date().getFullYear() - 2}
+          </Link>
+        </div>
         <p className="text-xl font-bold">{new Date().getFullYear() - 1}</p>
-        <Link href={`/team/${id}/${new Date().getFullYear()}`} className="text-xl">{new Date().getFullYear()}</Link>
+        <div className="flex items-center">
+          <Link
+            href={`/team/${id}/${new Date().getFullYear()}`}
+            className="text-xl"
+          >
+            {new Date().getFullYear()}
+          </Link>
+          <Link
+            href={`/team/${id}/${new Date().getFullYear()}`}
+            className="text-xl"
+          >
+            <HiOutlineArrowNarrowRight className="ms-8 transition hover:scale-125" />
+          </Link>
+        </div>
       </div>
-      <p className="font-bold text-xl uppercase mt-5 mb-2">{new Date().getFullYear() - 1} Regular Season Schedule</p>
+      <p className="font-bold text-xl uppercase mt-5 mb-2">
+        {new Date().getFullYear() - 1} Regular Season Schedule
+      </p>
       <div className="flex flex-wrap">
         {regularSchedule.data.map((game: any) => {
           return <ScheduleGame key={game.id} game={game} />
         })}
       </div>
-      <p className="font-bold text-xl uppercase mt-5 mb-2">{new Date().getFullYear() - 1} Playoffs Schedule</p>
+      <p className="font-bold text-xl uppercase mt-5 mb-2">
+        {new Date().getFullYear() - 1} Playoffs Schedule
+      </p>
       <div className="flex flex-wrap">
         {postSchedule.data.map((game: any) => {
           return <ScheduleGame key={game.id} game={game} />
