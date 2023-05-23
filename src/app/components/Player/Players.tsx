@@ -31,7 +31,7 @@ const Players = ({ players }: any) => {
                 href={`/players?page=${i+1}${searchParams.get("search") !== null ? "&search="+searchParams.get("search") : ""}`}
                 className={`${
                   (searchParams.get("page") !== null &&
-                  parseInt(searchParams.get("page")) === i + 1) || (searchParams.get("page") === null && i === 0)
+                  parseInt(searchParams.get("page")!) === i + 1) || (searchParams.get("page") === null && i === 0)
                     ? "font-bold bg-slate-200"
                     : "bg-slate-100 hover:bg-slate-200"
                 } px-2 py-1 transition`}
