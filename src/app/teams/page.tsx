@@ -60,7 +60,7 @@ const TeamsPage = async () => {
       <div className="flex flex-wrap">
         {Object.keys(teams["west"]).map((division: any) => {
           return (
-            <div className="flex flex-col items-center me-8">
+            <div key={teams["west"][division]} className="flex flex-col items-center me-8">
               <h3 className="uppercase font-bold text-lg mb-2">
                 {division.charAt(0).toUpperCase() + division.slice(1)}
               </h3>
@@ -84,7 +84,7 @@ const TeamsPage = async () => {
       <div className="flex flex-wrap">
         {Object.keys(teams["east"]).map((division: any) => {
           return (
-            <div className="flex flex-col items-center me-8">
+            <div key={teams["east"][division]} className="flex flex-col items-center me-8">
               <h3 className="uppercase font-bold text-lg mb-2">
                 {division.charAt(0).toUpperCase() + division.slice(1)}
               </h3>

@@ -39,7 +39,7 @@ const Boxscore = ({ stats }: any) => {
                 index={index}
               />
             ) : (
-              <tr className="border-t-2">
+              <tr key={stats["players"][player].id} className="border-t-2">
                 <td
                   colSpan={1}
                   className="px-5 py-1 font-bold uppercase text-xs border-r"
