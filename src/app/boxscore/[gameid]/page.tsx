@@ -102,7 +102,7 @@ const BoxscorePage = async ({ params: { gameid } }: Props) => {
         </div>
       </div>
       {Object.keys(teams).map((team) => (
-        <Boxscore stats={teams[team]} />
+        <Boxscore key={teams[team].id} stats={teams[team]} />
       ))}
     </div>
   )

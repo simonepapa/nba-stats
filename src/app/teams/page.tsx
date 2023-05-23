@@ -67,6 +67,7 @@ const TeamsPage = async () => {
               {teams["west"][division].map((team: any, index: number) => {
                 return (
                   <Link
+                    key={team.id}
                     href={`/team/${team.id}`}
                     className="flex items-center bg-slate-100 shadow px-4 py-4 w-fit transition hover:bg-slate-200 mb-4"
                   >
@@ -90,6 +91,7 @@ const TeamsPage = async () => {
               {teams["east"][division].map((team: any, index: number) => {
                 return (
                   <Link
+                    key={team.id}
                     href={`/team/${team.id}`}
                     className="flex items-center bg-slate-100 shadow px-4 py-4 w-fit transition hover:bg-slate-200 mb-4"
                   >

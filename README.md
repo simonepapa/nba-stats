@@ -4,6 +4,7 @@ This is an application to navigate through NBA scoreboards, teams and players in
 Libraries used:
 - React
 - NextJS 
+- TailwindCSS
 - react-icons
 
 The information are gathered using [balldontlie.io](https://www.balldontlie.io/) API
