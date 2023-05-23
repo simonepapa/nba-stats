@@ -19,8 +19,7 @@ async function fetchTeamInfo(id: string) {
   return team
 }
 
-async function fetchTeamRegularSchedule(id: string) {
-  let season = new Date().getFullYear() - 1 // current season stats are not available
+async function fetchTeamRegularSchedule(id: string, season: string) {
   const response = await fetch(
     `https://www.balldontlie.io/api/v1/games?seasons[]=${season}&team_ids[]=${id}&per_page=100&postseason=false`,
     {
@@ -34,8 +33,7 @@ async function fetchTeamRegularSchedule(id: string) {
   return schedule
 }
 
-async function fetchTeamPostSchedule(id: string) {
-  let season = new Date().getFullYear() - 1 // current season stats are not available
+async function fetchTeamPostSchedule(id: string, season: string) {
   const response = await fetch(
     `https://www.balldontlie.io/api/v1/games?seasons[]=${season}&team_ids[]=${id}&per_page=100&postseason=true`,
     {
@@ -49,10 +47,10 @@ async function fetchTeamPostSchedule(id: string) {
   return schedule
 }
 
-const TeamPage = async ({ params: { id } }: Props) => {
+const TeamScheduleSeasonPage = async ({ params: { id, season } }: Props) => {
   const team = await fetchTeamInfo(id)
-  const regularSchedule = await fetchTeamRegularSchedule(id)
-  const postSchedule = await fetchTeamPostSchedule(id)
+  const regularSchedule = await fetchTeamRegularSchedule(id, season)
+  const postSchedule = await fetchTeamPostSchedule(id, season)
 
   return (
     <div className="bg-white rounded-md shadow-md px-4 py-2 w-9/12 mt-4 mx-auto max-w-7xl">
@@ -64,17 +62,17 @@ const TeamPage = async ({ params: { id } }: Props) => {
       <p><strong>Division</strong>: {team.division}</p>
       <p><strong>Conference</strong>: {team.conference}</p>
       <div className="flex justify-evenly max-w-xl mx-auto">
-        <Link href={`/team/${id}/${new Date().getFullYear() - 2}`} className="text-xl">{new Date().getFullYear() - 2}</Link>
-        <p className="text-xl font-bold">{new Date().getFullYear() - 1}</p>
-        <Link href={`/team/${id}/${new Date().getFullYear()}`} className="text-xl">{new Date().getFullYear()}</Link>
+        <Link href={`/team/${id}/${parseInt(season) - 1}`} className="text-xl">{parseInt(season) - 1}</Link>
+        <p className="text-xl font-bold">{season}</p>
+        <Link href={`/team/${id}/${parseInt(season) + 1}`} className="text-xl">{parseInt(season) + 1}</Link>
       </div>
-      <p className="font-bold text-xl uppercase mt-5 mb-2">{new Date().getFullYear() - 1} Regular Season Schedule</p>
+      <p className="font-bold text-xl uppercase mt-5 mb-2">{parseInt(season)} Regular Season Schedule</p>
       <div className="flex flex-wrap">
         {regularSchedule.data.map((game: any) => {
           return <ScheduleGame key={game.id} game={game} />
         })}
       </div>
-      <p className="font-bold text-xl uppercase mt-5 mb-2">{new Date().getFullYear() - 1} Playoffs Schedule</p>
+      <p className="font-bold text-xl uppercase mt-5 mb-2">{parseInt(season)} Playoffs Schedule</p>
       <div className="flex flex-wrap">
         {postSchedule.data.map((game: any) => {
           return <ScheduleGame key={game.id} game={game} />
@@ -83,4 +81,4 @@ const TeamPage = async ({ params: { id } }: Props) => {
     </div>
   )
 }
-export default TeamPage
+export default TeamScheduleSeasonPage

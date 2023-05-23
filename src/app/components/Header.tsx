@@ -5,7 +5,7 @@ const Header = () => {
   const today = new Date()
 
   return (
-    <div className="w-screen flex items-center justify-between py-4 px-4 bg-blue-500">
+    <div className="w-screen flex items-center justify-between py-4 px-8 bg-blue-500">
       <Link href="/" className="font-bold text-xl">
         NBA Stats
       </Link>
