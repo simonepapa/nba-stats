@@ -10,9 +10,7 @@ const PlayerSearch = ({ getSearchResults }: any) => {
   const pathname = usePathname()
   const searchParams = useSearchParams() as any
 
-  const handleSubmit = async (e: any) => {
-    await new Promise((resolve) => setTimeout(resolve, 3000))
-
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     const currentSearchParams = new URLSearchParams(searchParams)
 
     e.preventDefault()

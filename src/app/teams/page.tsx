@@ -2,7 +2,7 @@ import Link from "next/link"
 import { IoLogoGithub } from "react-icons/io"
 
 async function fetchTeams() {
-  const teamsByConference: any = {
+  const teamsByConference: TeamsByConference = {
     east: {
       atlantic: [],
       central: [],
@@ -22,7 +22,7 @@ async function fetchTeams() {
   })
   const teams = await response.json()
 
-  teams.data.forEach((team: any) => {
+  teams.data.forEach((team: Team) => {
     switch (team.division) {
       case "Atlantic":
         teamsByConference["east"]["atlantic"].push(team)
@@ -58,13 +58,13 @@ const TeamsPage = async () => {
       <h1 className="font-bold text-3xl mb-2">NBA Teams</h1>
       <h2 className="font-bold text-xl mb-2">Western Conference</h2>
       <div className="flex flex-wrap">
-        {Object.keys(teams["west"]).map((division: any) => {
+        {Object.keys(teams["west"]).map((division: string) => {
           return (
-            <div key={teams["west"][division]} className="flex flex-col items-center me-8">
+            <div key={division} className="flex flex-col items-center me-8">
               <h3 className="uppercase font-bold text-lg mb-2">
                 {division.charAt(0).toUpperCase() + division.slice(1)}
               </h3>
-              {teams["west"][division].map((team: any, index: number) => {
+              {teams["west"][division].map((team: Team, index: number) => {
                 return (
                   <Link
                     key={team.id}
@@ -82,13 +82,13 @@ const TeamsPage = async () => {
       </div>
       <h2 className="font-bold text-xl mb-2 mt-4">Eastern Conference</h2>
       <div className="flex flex-wrap">
-        {Object.keys(teams["east"]).map((division: any) => {
+        {Object.keys(teams["east"]).map((division: string) => {
           return (
-            <div key={teams["east"][division]} className="flex flex-col items-center me-8">
+            <div key={division} className="flex flex-col items-center me-8">
               <h3 className="uppercase font-bold text-lg mb-2">
                 {division.charAt(0).toUpperCase() + division.slice(1)}
               </h3>
-              {teams["east"][division].map((team: any, index: number) => {
+              {teams["east"][division].map((team: Team, index: number) => {
                 return (
                   <Link
                     key={team.id}

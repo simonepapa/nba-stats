@@ -1,5 +1,5 @@
 // Variable to decide whether to go forwards or backwards (dates)
-export enum Direction {
+enum Direction {
   Backwards = "Backwards",
   Forwards = "Forwards",
 }

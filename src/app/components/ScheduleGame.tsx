@@ -1,6 +1,6 @@
 import Link from "next/link"
 
-const ScheduleGame = ({ game }: any) => {
+const ScheduleGame = ({game}: any) => {
   return (
     <div className="bg-slate-100 shadow px-4 md:px-8 py-4 mx-auto 2xl:mx-4 mb-8 md:mb-4 flex flex-col md:flex-row md:items-center w-full max-w-xs md:max-w-lg">
       <div className="sm:w-5/6">
@@ -25,10 +25,15 @@ const ScheduleGame = ({ game }: any) => {
         </p>
         <div className="flex flex-col">
           <div className="flex items-center">
-            <Link href={`/team/${game.visitor_team.id}`} className="text-lg w-56 text-[#0000EE] hover:underline">{game.visitor_team.full_name}</Link>
+            <Link
+              href={`/team/${game.visitor_team.id}`}
+              className="text-lg w-56 text-[#0000EE] hover:underline"
+            >
+              {game.visitor_team.full_name}
+            </Link>
             <p
               className={`${
-                game.visitor_team_score > game.home_team_score &&
+                game.visitor_team_score !== null && game.home_team_score !== null && game.visitor_team_score > game.home_team_score &&
                 game.status === "Final"
                   ? "font-bold"
                   : ""
@@ -38,10 +43,15 @@ const ScheduleGame = ({ game }: any) => {
             </p>
           </div>
           <div className="flex items-center">
-            <Link href={`/team/${game.home_team.id}`} className="text-lg w-56 text-[#0000EE] hover:underline">{game.home_team.full_name}</Link>
+            <Link
+              href={`/team/${game.home_team.id}`}
+              className="text-lg w-56 text-[#0000EE] hover:underline"
+            >
+              {game.home_team.full_name}
+            </Link>
             <p
               className={`${
-                game.visitor_team_score < game.home_team_score &&
+                game.visitor_team_score !== null && game.home_team_score !== null && game.visitor_team_score < game.home_team_score &&
                 game.status === "Final"
                   ? "font-bold"
                   : ""

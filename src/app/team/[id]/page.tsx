@@ -5,10 +5,6 @@ import {
   HiOutlineArrowNarrowRight,
 } from "react-icons/hi"
 
-interface Props {
-  params?: any
-}
-
 async function fetchTeamInfo(id: string) {
   const response = await fetch(
     `https://www.balldontlie.io/api/v1/teams/${id}`,
@@ -108,7 +104,7 @@ const TeamPage = async ({ params: { id } }: Props) => {
         {new Date().getFullYear() - 1} Regular Season Schedule
       </p>
       <div className="flex flex-wrap">
-        {regularSchedule.data.map((game: any) => {
+        {regularSchedule.data.map((game: ScheduleGame) => {
           return <ScheduleGame key={game.id} game={game} />
         })}
       </div>
@@ -116,7 +112,7 @@ const TeamPage = async ({ params: { id } }: Props) => {
         {new Date().getFullYear() - 1} Playoffs Schedule
       </p>
       <div className="flex flex-wrap">
-        {postSchedule.data.map((game: any) => {
+        {postSchedule.data.map((game: ScheduleGame) => {
           return <ScheduleGame key={game.id} game={game} />
         })}
       </div>

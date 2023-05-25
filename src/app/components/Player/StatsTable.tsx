@@ -1,6 +1,7 @@
 import Season from "./Season"
 
 const StatsTable = ({ stats }: any) => {
+  console.log(stats)
   return (
     <div className="overflow-x-auto max-w-7xl mt-4">
       <table className="w-full table-auto">

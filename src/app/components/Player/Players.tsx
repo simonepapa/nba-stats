@@ -9,7 +9,7 @@ const Players = ({ players }: any) => {
     <>
       <div className="flex flex-wrap gap-4 mt-8">
         {players.data &&
-          players.data.map((player: any) => {
+          players.data.map((player: PlayerInfo) => {
             return (
               <Link
                 key={player.id}

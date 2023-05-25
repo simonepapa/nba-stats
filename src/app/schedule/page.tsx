@@ -2,13 +2,13 @@ import Link from "next/link"
 import { getDays } from "../utils/utils"
 import ScheduleGame from "../components/ScheduleGame"
 
-async function fetchTodaysGames() {
-  const today = new Date()
-  const day = today.getDate()
-  const month = today.getMonth() + 1
-  const year = today.getFullYear()
-  const date = year+"-"+month+"-"+day
-  
+async function fetchTodaysGames() : Promise<Schedule> {
+  const today: Date = new Date()
+  const day: number = today.getDate()
+  const month: number = today.getMonth() + 1
+  const year: number = today.getFullYear()
+  const date: string = year + "-" + month + "-" + day
+
   const response = await fetch(
     `https://www.balldontlie.io/api/v1/games?start_date=${date}&end_date=${date}`,
     {
@@ -55,7 +55,7 @@ const SchedulePage = async () => {
         })}
       </div>
       <div className="flex flex-wrap">
-        {games.data.map((game: any) => {
+        {games.data.map((game: ScheduleGame) => {
           return <ScheduleGame key={game.id} game={game} />
         })}
       </div>

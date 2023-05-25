@@ -1,10 +1,6 @@
 import StatsTable from "@/app/components/Player/StatsTable"
 import Link from "next/link"
 
-interface Props {
-  params?: any
-}
-
 async function fetchPlayerInfo(id: string) {
   const response = await fetch(
     `https://www.balldontlie.io/api/v1/players/${id}`,
@@ -20,7 +16,7 @@ async function fetchPlayerInfo(id: string) {
 }
 
 async function fetchStats(id: string) {
-  const stats: { [key: string]: any } = {}
+  const stats: { [key: string]: PlayerSeason } = {}
   let season = new Date().getFullYear() - 1 // current season stats are not available
   let stop = false
 
@@ -56,18 +52,40 @@ const PlayerPage = async ({ params: { id } }: Props) => {
       <h1 className="font-bold text-3xl mb-2">
         {player.first_name} {player.last_name}
       </h1>
-      <p><strong>Team</strong>: <Link href={`/team/${player.team.id}`} className="text-[#0000EE] hover:underline">{player.team.full_name}</Link></p>
-      <p><strong>Position</strong>: {player.position}</p>
+      <p>
+        <strong>Team</strong>:{" "}
+        <Link
+          href={`/team/${player.team.id}`}
+          className="text-[#0000EE] hover:underline"
+        >
+          {player.team.full_name}
+        </Link>
+      </p>
+      <p>
+        <strong>Position</strong>: {player.position}
+      </p>
       <p>
         <strong>Height</strong>:{" "}
         {player.height_feet !== null && player.height_inches !== null
-          ? player.height_feet + "' " + player.height_inches + "''" + " ("+ (player.height_feet * 30.48 + player.height_inches * 2.54).toFixed(1) + " cm)"
+          ? player.height_feet +
+            "' " +
+            player.height_inches +
+            "''" +
+            " (" +
+            (player.height_feet * 30.48 + player.height_inches * 2.54).toFixed(
+              1
+            ) +
+            " cm)"
           : "//"}
       </p>
       <p>
         <strong>Weight</strong>:{" "}
         {player.weight_pounds !== null
-          ? player.weight_pounds + " lbs" + " (" + (player.weight_pounds / 2.205).toFixed(1) + " kg)"
+          ? player.weight_pounds +
+            " lbs" +
+            " (" +
+            (player.weight_pounds / 2.205).toFixed(1) +
+            " kg)"
           : "//"}
       </p>
       <StatsTable stats={stats} />

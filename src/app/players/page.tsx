@@ -7,7 +7,7 @@ import Players from "../components/Player/Players"
 
 const PlayersPage = () => {
   const [players, setPlayers] = useState({})
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState<boolean>(false)
 
   const searchParams = useSearchParams()
 
@@ -43,7 +43,7 @@ const PlayersPage = () => {
   return (
     <div className="bg-white rounded-md shadow-md px-4 py-4 w-9/12 mt-4 mx-auto">
       <h1 className="font-bold text-3xl mb-2">NBA Players</h1>
-      <PlayerSearch getSearchResults={(results: any) => setPlayers(results)} />
+      <PlayerSearch getSearchResults={(results: Players) => setPlayers(results)} />
       {!loading ? (
         <Players players={players} />
       ) : (
